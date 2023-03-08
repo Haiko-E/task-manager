@@ -11,11 +11,15 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-export const sendWelcomeEmail = (email, name) => {
-  transporter.sendMail({
-    from: process.env.EMAIL_ADDRESS,
-    to: email,
-    subject: 'Welcome',
-    text: `Welcome to the application ${name}`,
-  });
+export const sendWelcomeEmail = async (email, name) => {
+  try {
+    transporter.sendMail({
+      from: process.env.EMAIL_ADDRESS,
+      to: email,
+      subject: 'Welcome',
+      text: `Welcome to the application ${name}`,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
