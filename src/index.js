@@ -3,7 +3,7 @@ import { connectToMongo } from './db/mongoose.js';
 import taskRouter from './routes/task.js';
 import userRouter from './routes/user.js';
 
-connectToMongo();
+await connectToMongo();
 
 const app = express();
 const port = process.env.PORT || 3000;
