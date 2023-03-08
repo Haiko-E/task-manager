@@ -69,8 +69,8 @@ router.post('/users', async (req, res) => {
   try {
     const token = await user.generateAuthToken();
     await user.save();
-    res.status(201).send({ user, token });
     await sendWelcomeEmail(req.body.email, req.body.name);
+    res.status(201).send({ user, token });
   } catch (error) {
     res.status(500).send(error);
   }
